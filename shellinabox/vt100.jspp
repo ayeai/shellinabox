@@ -1510,6 +1510,11 @@ VT100.prototype.setTextContentRaw = function(elem, s) {
 };
 
 //AyeVDI modifications
+//Caution: Multi line hyperlinks are not captured by this script
+//TBD: Update protocol to mark ayevdi-link-start && ayevdi-link-end
+//The regex can be updated to support spillover on two lines, but 
+//anything in between will be missed. Small slices may be tag 
+//posted by checking the term size and dividing
 var aye=0;
 var ayeShellUrl="https://ayeai.xyz/ayevdi/streams.html";
 var ayeGUIUrl="https://ayeai.xyz/ayevdi/streams.html";
@@ -1574,7 +1579,7 @@ VT100.prototype.setTextContent = function(elem, s) {
         //Note: Load balancer must not emit any URL
         var  ifrm = document.createElement('div');
         ifrm.setAttribute('id', 'ayevdi_div'); // assign a temp id
-        ifrm.innerHTML='<iframe src="' + ayeShellUrl + '" width="100%" height="680" frameborder="0"></iframe>';
+        ifrm.innerHTML='<iframe src="' + ayeShellUrl + '" width="100%" height="400" frameborder="0"></iframe>';
 
         //We only place the ayevdi_div above vt100
         //If vt100 continues to be populated and visible at large screen sizes
@@ -1607,15 +1612,16 @@ VT100.prototype.setTextContent = function(elem, s) {
           ifrm.innerHTML='<iframe src="' + ayeGUIUrl + '" width="100%" height="680" frameborder="0"></iframe>';
 
           var el = document.getElementById('vt100');
-          el.parentNode.insertBefore(ifrm, el);
-          //var child = el.lastElementChild;  
-          //while (child) {
-          //  el.removeChild(child); 
-          //  child = el.lastElementChild;
-          //} 
-          //el.parentNode.removeChild(el);
           //This may solve the keyboard access bug in novnc (ref tabindex:0 in html5 canvas)
-          //el.contentWindow.focus();
+          el.contentWindow.focus();
+          //Now remove vt100
+          el.parentNode.insertBefore(ifrm, el);
+          var child = el.lastElementChild;  
+          while (child) {
+            el.removeChild(child); 
+            child = el.lastElementChild;
+          } 
+          el.parentNode.removeChild(el);
         }
       }
       consumed        += RegExp.lastMatch.length;
