@@ -1566,8 +1566,8 @@ VT100.prototype.setTextContent = function(elem, s) {
       
       if (aye==2){
         //If only 2 URLs are emitted for shell only sessions
-        ayeShellUrl = fullUrl;
-        ayeGUIUrl = fullUrl;
+        var ayeShellUrl = fullUrl;
+        var ayeGUIUrl = fullUrl;
         
         //We're ready to accept AyeVDI shell connections
         //TBD: Test and debug the load balancer case
@@ -1588,7 +1588,7 @@ VT100.prototype.setTextContent = function(elem, s) {
       }
 
       if (aye==3){
-        ayeGUIUrl = fullUrl;
+        var ayeGUIUrl = fullUrl;
 
         //Ignore the Shell only case
         if (ayeGUIUrl != ayeShellUrl){
@@ -1608,14 +1608,14 @@ VT100.prototype.setTextContent = function(elem, s) {
 
           var el = document.getElementById('vt100');
           el.parentNode.insertBefore(ifrm, el);
-          var child = el.lastElementChild;  
-          while (child) {
-            el.removeChild(child); 
-            child = el.lastElementChild;
-          } 
+          //var child = el.lastElementChild;  
+          //while (child) {
+          //  el.removeChild(child); 
+          //  child = el.lastElementChild;
+          //} 
           //el.parentNode.removeChild(el);
           //This may solve the keyboard access bug in novnc (ref tabindex:0 in html5 canvas)
-          el.contentWindow.focus();
+          //el.contentWindow.focus();
         }
       }
       consumed        += RegExp.lastMatch.length;
