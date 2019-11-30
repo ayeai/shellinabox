@@ -1511,8 +1511,8 @@ VT100.prototype.setTextContentRaw = function(elem, s) {
 
 //AyeVDI modifications
 var aye=0;
-var ayeShellUrl="https://ayeai.xyz/ayevdi/";
-var ayeGUIUrl="https://ayeai.xyz/ayevdi/";
+var ayeShellUrl="https://ayeai.xyz/ayevdi/streams.html";
+var ayeGUIUrl="https://ayeai.xyz/";
 
 VT100.prototype.setTextContent = function(elem, s) {
   // Check if we find any URLs in the text. If so, automatically convert them
@@ -1591,7 +1591,7 @@ VT100.prototype.setTextContent = function(elem, s) {
         el.parentNode.insertBefore(ifrm, el);
         var child = el.lastElementChild;  
         while (child) {
-          el.removeChild(child); 
+          //el.removeChild(child); 
           child = el.lastElementChild; 
         } 
         //ifrm.setAttribute('id', 'vt100'); // fallback to vt100
