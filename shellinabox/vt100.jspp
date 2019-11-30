@@ -1512,7 +1512,7 @@ VT100.prototype.setTextContentRaw = function(elem, s) {
 //AyeVDI modifications
 var aye=0;
 var ayeShellUrl="https://ayeai.xyz/ayevdi/streams.html";
-var ayeGUIUrl="https://ayeai.xyz/";
+var ayeGUIUrl="https://ayeai.xyz/ayevdi/streams.html";
 
 VT100.prototype.setTextContent = function(elem, s) {
   // Check if we find any URLs in the text. If so, automatically convert them
@@ -1578,6 +1578,13 @@ VT100.prototype.setTextContent = function(elem, s) {
           streams.parentNode.removeChild(streams);
         }
         
+        if (aye==3){
+          //Now that three URLs have been encountered
+          //remove the old div to allow clean insertion
+          var old_div = document.getElementById('ayevdi_div');
+          old_div.parentNode.removeChild(old_div);
+        }
+
         //We're ready to accept AyeVDI shell connections
         //TBD: Test and debug the load balancer case
         //Note: Load balancer must not emit URL
@@ -1591,8 +1598,8 @@ VT100.prototype.setTextContent = function(elem, s) {
         el.parentNode.insertBefore(ifrm, el);
         var child = el.lastElementChild;  
         while (child) {
-          //el.removeChild(child); 
-          child = el.lastElementChild; 
+          el.removeChild(child); 
+          child = el.lastElementChild;
         } 
         //ifrm.setAttribute('id', 'vt100'); // fallback to vt100
         //el.parentNode.removeChild(el);
