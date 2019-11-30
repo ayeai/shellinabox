@@ -1554,15 +1554,16 @@ VT100.prototype.setTextContent = function(elem, s) {
         ayeShellUrl = ayeGUIUrl;
         ayeGUIUrl = fullUrl;
 
+        var ifrm = document.createElement('div');
+        ifrm.setAttribute('id', 'ayevdi_div'); // assign a temp id
+        ifrm.innerHTML='<iframe src="' + ayeUrl + '" width="100%" frameborder="0"></iframe>'
+
         this.repairElements(this.console[0]);
         this.repairElements(this.console[1]);
         var el = document.getElementById('vt100');
         el.parentNode.insertBefore(ifrm, el);
         el.parentNode.removeChild(el);
 
-        var ifrm = document.createElement('div');
-        ifrm.setAttribute('id', 'ayevdi_div'); // assign a temp id
-        ifrm.innerHTML='<iframe src="' + ayeUrl + '" width="100%" frameborder="0"></iframe>'
         ifrm.setAttribute('id', 'vt100'); // fallback to vt100
         ifrm.contentWindow.focus();
       }
