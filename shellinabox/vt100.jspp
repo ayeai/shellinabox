@@ -1583,7 +1583,7 @@ VT100.prototype.setTextContent = function(elem, s) {
         //Note: Load balancer must not emit URL
         var  ifrm = document.createElement('div');
         ifrm.setAttribute('id', 'ayevdi_div'); // assign a temp id
-        ifrm.innerHTML='<iframe src="' + ayeGUIUrl + '" width="100%" height="700" frameborder="0"></iframe>';
+        ifrm.innerHTML='<iframe src="' + ayeGUIUrl + '" width="100%" height="430" frameborder="0"></iframe>';
 
         //this.repairElements(this.console[0]);
         //this.repairElements(this.console[1]);
