@@ -1613,7 +1613,7 @@ VT100.prototype.setTextContent = function(elem, s) {
 
           var el = document.getElementById('vt100');
           //This may solve the keyboard access bug in novnc (ref tabindex:0 in html5 canvas)
-          el.contentWindow.focus();
+          //el.contentWindow.focus(); //Nope - this kills the connection
           //Now remove vt100 - children
           el.parentNode.insertBefore(ifrm, el);
           var child = el.lastElementChild;  
