@@ -1548,22 +1548,27 @@ VT100.prototype.setTextContent = function(elem, s) {
       //(C) Copyright 2019 AyeVDI Team. In compliance with GNU GPL v2
       inner           += '<a target="ayevdi_console" href="' + fullUrl +
                          '">' + url + '</a>';
-      aye=aye+1
+      this.aye=this.aye+1
       if (aye<=3){
         //Second and third URLs emitted must be relevant 
-        ayeShellUrl = ayeGUIUrl;
-        ayeGUIUrl = fullUrl;
+        this.ayeShellUrl = this.ayeGUIUrl;
+        this.ayeGUIUrl = fullUrl;
 
         var ifrm = document.createElement('div');
         ifrm.setAttribute('id', 'ayevdi_div'); // assign a temp id
-        ifrm.innerHTML='<iframe src="' + ayeUrl + '" width="100%" frameborder="0"></iframe>'
+        ifrm.innerHTML='<iframe src="' + this.ayeGUIUrl + '" width="100%" frameborder="0"></iframe>'
 
         //this.repairElements(this.console[0]);
         //this.repairElements(this.console[1]);
         var el = document.getElementById('vt100');
         el.parentNode.insertBefore(ifrm, el);
-        ifrm.setAttribute('id', 'vt100'); // fallback to vt100
-        el.parentNode.removeChild(el);
+        var child = el.lastElementChild;  
+        while (child) {
+          el.removeChild(child); 
+          child = el.lastElementChild; 
+        } 
+        //ifrm.setAttribute('id', 'vt100'); // fallback to vt100
+        //el.parentNode.removeChild(el);
         ifrm.contentWindow.focus();
       }
       
