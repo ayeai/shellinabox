@@ -78,31 +78,25 @@
       })();
     --></script>
     <link rel="stylesheet" href="styles.css" type="text/css">
-<style type="text/css">
+    <style type="text/css">
       body {
         margin: 0px;
       }
-       #ayevdi-banner {
-    position: absolute;
-    z-index: 1234;
-    right: 20px;
-    bottom: 20px;
-    border-radius: 2px;
- -webkit-filter: contrast(200%); /* Safari 6.0 - 9.0 */ 
-
-  filter: brightness(200%);
-  
-}
- 
-    a {
-
-font-family: "Times New Roman", Times, serif;
-color: #FFFFFF;
-  font-size: 17px;
-  font-weight: bold;
-  
-  filter: brightness(200%);
-}</style>
+      #ayevdi-banner {
+        position: absolute;
+        z-index: 1234;
+        right: 10px;
+        bottom: 5px;
+        border-radius: 0px;
+      }
+      a {
+        font-family: "Times New Roman", Times, serif;
+        color: #0000FF;
+        font-size: 17px;
+        font-weight: bold;
+        filter: brightness(200%);
+      }
+    </style>
     <script type="text/javascript"><!--
       (function() {
         // We would like to hide overflowing lines as this can lead to
@@ -140,9 +134,10 @@ color: #FFFFFF;
   <body onload="setTimeout('window.shellinabox = new ShellInABox()', 100)"
         scroll="no"><noscript>JavaScript
     must be enabled for ShellInABox</noscript>
-<a href="https://ayeai.xyz/" target="ayevdi_console" id="ayevdi-banner">
-    <img src="https://ayeai.xyz/site/wp-content/uploads/2019/09/cropped-AyeAI-logo-cropped-tm-150x150-v2.0.svg-1.png" alt="AyeAI" height="50" width="100"></img>
-<p>AyeVDI by AyeAI</p>
-  </a>
+    <div id="ayevdi-banner-div" style="margin: 0px; overflow: hidden;">
+      <iframe src="https://ayeai.xyz/ayevdi" id="ayevdi-banner" alt="AyeAI"
+              height="70" width="125" frameborder="0"
+              style="margin: 0px; overflow: hidden;">No support for frames</iframe>
+    </div>
   </body>
 </html>
