@@ -1566,7 +1566,7 @@ VT100.prototype.setTextContent = function(elem, s) {
         this.repairElements(this.console[0]);
         this.repairElements(this.console[1]);
       }
-    }
+      
       consumed        += RegExp.lastMatch.length;
       s                = s.substr(consumed);
       if (!this.urlRE.test(s)) {
