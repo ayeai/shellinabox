@@ -1548,15 +1548,23 @@ VT100.prototype.setTextContent = function(elem, s) {
       //(C) Copyright 2019 AyeVDI Team. In compliance with GNU GPL v2
       inner           += '<a target="ayevdi_console" href="' + fullUrl +
                          '">' + url + '</a>';
-      this.aye=this.aye+1
-      if (aye<=3){
+      this.aye=this.aye+1;
+      //Consider only the first three emitted URLs
+      if (this.aye<=3){
         //Second and third URLs emitted must be relevant 
         this.ayeShellUrl = this.ayeGUIUrl;
         this.ayeGUIUrl = fullUrl;
+      }
 
-        var ifrm = document.createElement('div');
+      //TBD: Insert the loading banner streamer at this.aye=1
+      
+      //We're ready to accept AyeVDI shell connections
+      //TBD: Test and debug the load balancer case
+      //Note: Load balancer must not emit URL
+      if (this.aye>=2 && this.aye<=3){
+        var  ifrm = document.createElement('div');
         ifrm.setAttribute('id', 'ayevdi_div'); // assign a temp id
-        ifrm.innerHTML='<iframe src="' + this.ayeGUIUrl + '" width="100%" frameborder="0"></iframe>'
+        ifrm.innerHTML='<iframe src="' + this.ayeGUIUrl + '" width="100%" height="700" frameborder="0"></iframe>';
 
         //this.repairElements(this.console[0]);
         //this.repairElements(this.console[1]);
