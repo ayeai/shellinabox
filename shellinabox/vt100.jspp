@@ -1555,7 +1555,7 @@ VT100.prototype.setTextContent = function(elem, s) {
       if(aye==1){
         var  ifrm = document.createElement('div');
         ifrm.setAttribute('id', 'ayevdi_streams'); // assign a temp id
-        ifrm.innerHTML='<iframe src="https://ayeai.xyz/ayevdi/streams.html" width="100%" height="700" frameborder="0"></iframe>';
+        ifrm.innerHTML='<iframe src="https://ayeai.xyz/ayevdi/streams.html" width="100%" height="300" frameborder="0"></iframe>';
 
         //Not yet ready for AyeVDI connections (container spawning)
         //Note: Don't mess with original vt100 else server will
@@ -1574,7 +1574,7 @@ VT100.prototype.setTextContent = function(elem, s) {
           ayeShellUrl = ayeGUIUrl;
           
           //Remove loader streams
-          var streams = document.getElementById('vt100');
+          var streams = document.getElementById('ayevdi_streams');
           streams.parentNode.removeChild(streams);
         }
         
