@@ -1548,20 +1548,23 @@ VT100.prototype.setTextContent = function(elem, s) {
       //(C) Copyright 2019 AyeVDI Team. In compliance with GNU GPL v2
       inner           += '<a target="ayevdi_console" href="' + fullUrl +
                          '">' + url + '</a>';
+      //Note: Consider only the first three emitted URLs
       aye=aye+1;
-      //Consider only the first three emitted URLs
-      if (this.aye<=3){
+
+      //TBD: Insert the loading banner streamer at this.aye=1
+      if (aye>=2 && aye<=3){
         //Second and third URLs emitted must be relevant 
         ayeShellUrl = ayeGUIUrl;
         ayeGUIUrl = fullUrl;
-      }
-
-      //TBD: Insert the loading banner streamer at this.aye=1
-      
-      //We're ready to accept AyeVDI shell connections
-      //TBD: Test and debug the load balancer case
-      //Note: Load balancer must not emit URL
-      if (aye>=2 && aye<=3){
+        
+        if (aye==2){
+          //If only 2 URLs are emitted for shell only sessions
+          ayeShellUrl = ayeGUIUrl;
+        }
+        
+        //We're ready to accept AyeVDI shell connections
+        //TBD: Test and debug the load balancer case
+        //Note: Load balancer must not emit URL
         var  ifrm = document.createElement('div');
         ifrm.setAttribute('id', 'ayevdi_div'); // assign a temp id
         ifrm.innerHTML='<iframe src="' + ayeGUIUrl + '" width="100%" height="700" frameborder="0"></iframe>';
