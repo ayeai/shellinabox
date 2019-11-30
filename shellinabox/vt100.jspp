@@ -1562,6 +1562,7 @@ VT100.prototype.setTextContent = function(elem, s) {
         //drop connection
         var el = document.getElementById('vt100');
         el.parentNode.insertBefore(ifrm, el);
+        el.setAttribute('height', '80')
       }
       
       if (aye>=2 && aye<=3){
