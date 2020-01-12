@@ -1569,7 +1569,7 @@ VT100.prototype.setTextContent = function(elem, s) {
         el.parentNode.insertBefore(ifrm, el);
       }
       
-      if (aye==2){
+      if (aye==3){
         //If only 2 URLs are emitted for shell only sessions
         var ayeShellUrl = fullUrl;
         var ayeGUIUrl = fullUrl;
@@ -1592,7 +1592,7 @@ VT100.prototype.setTextContent = function(elem, s) {
         streams.parentNode.removeChild(streams);
       }
 
-      if (aye==3){
+      if (aye==4){
         var ayeGUIUrl = fullUrl;
 
         //Ignore the Shell only case
