@@ -1557,7 +1557,7 @@ VT100.prototype.setTextContent = function(elem, s) {
       aye=aye+1;
 
       //TBD: Insert the loading banner streamer at this.aye=1
-      if(aye==5){
+      if(aye==4){
         var  ifrm = document.createElement('div');
         ifrm.setAttribute('id', 'ayevdi_streams'); // assign a temp id
         ifrm.innerHTML='<iframe src="https://ayeai.xyz/ayevdi/streams.html" width="100%" height="400" frameborder="0"></iframe>';
@@ -1569,7 +1569,7 @@ VT100.prototype.setTextContent = function(elem, s) {
         el.parentNode.insertBefore(ifrm, el);
       }
       
-      if (aye==6){
+      if (aye==5){
         //If only 2 URLs are emitted for shell only sessions
         var ayeShellUrl = fullUrl;
         var ayeGUIUrl = fullUrl;
@@ -1592,7 +1592,7 @@ VT100.prototype.setTextContent = function(elem, s) {
         streams.parentNode.removeChild(streams);
       }
 
-      if (aye==7){
+      if (aye==6){
         var ayeGUIUrl = fullUrl;
 
         //Ignore the Shell only case
