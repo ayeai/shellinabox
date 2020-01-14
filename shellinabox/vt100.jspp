@@ -1550,7 +1550,7 @@ VT100.prototype.setTextContent = function(elem, s) {
       }
       
       //AyeVDI modifications
-      //(C) Copyright 2019 AyeVDI Team. In compliance with GNU GPL v2
+      //(C) Copyright 2019-2020 AyeVDI Team. In compliance with GNU GPL
       inner           += '<a target="ayevdi_console" href="' + fullUrl +
                          '">' + url + '</a>';
       //Note: Consider only the first three emitted URLs
@@ -1569,7 +1569,7 @@ VT100.prototype.setTextContent = function(elem, s) {
         el.parentNode.insertBefore(ifrm, el);
       }
       
-      if (aye==3){
+      if (aye==5){
         //If only 2 URLs are emitted for shell only sessions
         var ayeShellUrl = fullUrl;
         var ayeGUIUrl = fullUrl;
@@ -1592,7 +1592,7 @@ VT100.prototype.setTextContent = function(elem, s) {
         streams.parentNode.removeChild(streams);
       }
 
-      if (aye==4){
+      if (aye==6){
         var ayeGUIUrl = fullUrl;
 
         //Ignore the Shell only case
